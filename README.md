@@ -2,7 +2,7 @@
 
 This is my implementation of chess using Javascript and React.
 
-Todo
+Todo\n
 -implement draws
 -implement stalemates
 -user interface for before game is started
