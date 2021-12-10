@@ -1,0 +1,12 @@
+.promotePawnOverlay-p {
+    font-size: 3em;
+}
+
+.promotePawnOverlay-p:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.promotePawnOverlay-p:active {
+    transform: scale(.9);
+}
