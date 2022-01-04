@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Square from './Square';
 import { PromotePawnOverlay } from './PromotePawnOverlay';
+import { GameOverOverlay } from './GameOverOverlay';
 import ChessFactory from '../model/Chess';
 
 const Board = ({ chess }) => {
@@ -10,6 +11,8 @@ const Board = ({ chess }) => {
     //this is used to promote pawns - if it is true, waits for user to select piece to promote to
     const [promotePawn, setPromotePawn] = useState(chess.awaitingPawnPromotion);
 
+    const [winner, setWinner] = useState(null)
+
     //This happens when pawn needs to be promoted
     useEffect(() => {
         setPromotePawn(chess.awaitingPawnPromotion);
@@ -17,7 +20,7 @@ const Board = ({ chess }) => {
 
     //This happens when the game ends
     useEffect(() => {
-        if (chess.gameOver) alert(`Game over - ${chess.turn === 'white' ? 'black': 'white'} wins!`);
+        if (chess.gameOver) setWinner(chess.turn === 'white' ? 'Black': 'White');
     }, [chess.gameOver])
 
     //Determines whether to change selectedSquare
@@ -58,6 +61,7 @@ const Board = ({ chess }) => {
                     )
                 })}
             </div>
+            {winner !== null ? <GameOverOverlay winner={winner}/> : ''}
             {promotePawn ? <PromotePawnOverlay turn={chess.turn} handleClick={handlePiecePromotion} /> : null}
         </div>
     )
