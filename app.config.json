@@ -1,0 +1,10 @@
+{
+    "apps" : [
+         {
+              "name" : "chess.js",
+              "interpreter": "none",
+              "script": "npx",
+              "args": "serve -s build -l 8888"
+         }
+   ]
+}
